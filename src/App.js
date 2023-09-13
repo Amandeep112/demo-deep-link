@@ -28,8 +28,12 @@ function App() {
         navigator.userAgent.indexOf("Safari") !== -1 &&
         navigator.userAgent.indexOf("Chrome") === -1
       ) {
-        window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
-        window.location.href = "https://tbsecomd.wpengine.com/openApp";
+        window.open(
+          "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html",
+          "_blank"
+        );
+        window.location.href =
+          "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html";
         window.alert("enter IN safari");
       } else {
         if (isiOS || isAndroid) {

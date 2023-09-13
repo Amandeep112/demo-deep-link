@@ -17,9 +17,8 @@ function App() {
         window.location.href = safariExpression
           ? "https://tbsecomd.wpengine.com/openApp"
           : "thebeerstore://";
-        document.getElementById("loader").src = safariExpression
-          ? "https://tbsecomd.wpengine.com/openApp"
-          : "thebeerstore://" + window.location.search + window.location.hash;
+        document.getElementById("loader").src =
+          "thebeerstore://" + window.location.search + window.location.hash;
         fallbackLink = isAndroid
           ? "market://details?id=com.beerstore" +
             window.location.search +

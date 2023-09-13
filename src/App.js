@@ -15,9 +15,17 @@ function App() {
       isAndroid = navigator.userAgent.match("Android");
     var appleExpression = /Apple/i.test(navigator.userAgent);
     var safariExpression = /Safari/i.test(navigator.userAgent);
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf("safari") != -1) {
+      if (ua.indexOf("chrome") > -1) {
+        alert("1"); // Chrome
+      } else {
+        alert("2"); // Safari
+      }
+    }
     try {
       if (safariExpression && appleExpression) {
-        window.location.href="https://tbsecomd.wpengine.com/openApp";
+        window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
         window.alert("enter IN safari");
       } else {
         if (isiOS || isAndroid) {

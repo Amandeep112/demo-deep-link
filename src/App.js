@@ -16,11 +16,13 @@ function App() {
         navigator.userAgent
       );
     var safariExpression = /Safari/i.test(navigator.userAgent);
-    var deepLinkURL = safariExpression
-      ? "https://tbsecomd.wpengine.com/openApp"
-      : `thebeerstore://`;
+    // var deepLinkURL = safariExpression
+    //   ? "https://tbsecomd.wpengine.com/openApp"
+    //   : `thebeerstore://`;
     if (isMobile) {
-      window.location.href = deepLinkURL;
+      safariExpression
+        ? window.open("https://tbsecomd.wpengine.com/openApp", "_blank")
+        : (window.location.href = `thebeerstore://`);
       setTimeout(function () {
         // If the app does not open, fall back to the browser
         window.open(webURL, "_blank").focus();

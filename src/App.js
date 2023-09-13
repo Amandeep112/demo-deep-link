@@ -4,35 +4,53 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    if (/Safari/i.test(navigator.userAgent)) {
-      window.open("https://tbsecomd.wpengine.com/openApp",'_blank');
-    } else {
-      var webURL;
-      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        webURL =
-          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+    var fallbackLink =
+      "http://example.com/my-web-app/" +
+      window.location.search +
+      window.location.hash;
+    var isiOS =
+        navigator.userAgent.match("iPad") ||
+        navigator.userAgent.match("iPhone") ||
+        navigator.userAgent.match("iPod"),
+      isAndroid = navigator.userAgent.match("Android");
+    // var appleExpression = /Apple/i.test(navigator.userAgent);
+    var safariExpression = /Safari/i.test(navigator.userAgent);
+    try {
+      if (safariExpression) {
+        window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
       } else {
-        webURL = `market://details?id=com.beerstore`;
+        if (isiOS || isAndroid) {
+          window.location.href = "thebeerstore://";
+          // document.getElementById("loader").src =
+          //   "thebeerstore://" + window.location.search + window.location.hash;
+          fallbackLink = isAndroid
+            ? "market://details?id=com.beerstore" +
+              window.location.search +
+              window.location.hash
+            : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
+              window.location.search +
+              window.location.hash;
+          window.setTimeout(function () {
+            window.location.replace(fallbackLink);
+          }, 1000);
+        } else {
+          window.location.href =
+            "https://www.thebeerstore.ca/" +
+            window.location.search +
+            window.location.hash;
+        }
       }
-
-      var isMobile =
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        );
-
-      var deepLinkURL = `thebeerstore://`;
-      if (isMobile) {
-        window.location.href = deepLinkURL;
-        setTimeout(function () {
-          // If the app does not open, fall back to the browser
-          window.open(webURL, "_blank");
-          window.location.href = webURL;
-        }, 1000);
-      } else {
-        // Open in the browser on non-mobile devices
-        window.open("https://www.thebeerstore.ca/", "_blank");
-        window.location.href = "https://www.thebeerstore.ca/";
-      }
+    } catch {
+      window.open(
+        "https://www.thebeerstore.ca/" +
+          window.location.search +
+          window.location.hash,
+        "_blank"
+      );
+      window.location.href =
+        "https://www.thebeerstore.ca/" +
+        window.location.search +
+        window.location.hash;
     }
   }, []);
 

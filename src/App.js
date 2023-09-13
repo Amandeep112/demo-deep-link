@@ -5,7 +5,7 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     if (/Safari/i.test(navigator.userAgent)) {
-      window.location.href ="https://tbsecomd.wpengine.com/openApp";
+      window.open("https://tbsecomd.wpengine.com/openApp",'_blank');
     } else {
       var webURL;
       if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {

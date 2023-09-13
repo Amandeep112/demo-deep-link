@@ -22,7 +22,7 @@ function App() {
       ? "https://tbsecomd.wpengine.com/openApp"
       : `thebeerstore://`;
     if (isMobile) {
-      window.location.href = deepLinkURL;
+      window.open(deepLinkURL);
       setTimeout(function () {
         // If the app does not open, fall back to the browser
         window.open(webURL, "_blank");

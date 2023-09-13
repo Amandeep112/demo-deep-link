@@ -34,6 +34,10 @@ function App() {
         );
         window.location.href =
           "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html";
+        window.setTimeout(function () {
+          window.location.replace(fallbackLink);
+          window.alert("fallback detected");
+        }, 1000);
         window.alert("enter IN safari");
       } else {
         if (isiOS || isAndroid) {

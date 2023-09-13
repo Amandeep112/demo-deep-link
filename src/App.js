@@ -11,7 +11,6 @@ function App() {
     } else {
       webURL = `market://details?id=com.beerstore`;
     }
-    window.location.href = webURL;
     var isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent

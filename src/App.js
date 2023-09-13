@@ -13,10 +13,10 @@ function App() {
         navigator.userAgent.match("iPhone") ||
         navigator.userAgent.match("iPod"),
       isAndroid = navigator.userAgent.match("Android");
-    // var appleExpression = /Apple/i.test(navigator.userAgent);
+    var appleExpression = /Apple/i.test(navigator.userAgent);
     var safariExpression = /Safari/i.test(navigator.userAgent);
     try {
-      if (safariExpression) {
+      if (safariExpression && appleExpression) {
         window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
         window.alert("enter IN safari");
       } else {

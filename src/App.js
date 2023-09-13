@@ -18,6 +18,7 @@ function App() {
     try {
       if (safariExpression) {
         window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
+        window.alert("enter IN safari");
       } else {
         if (isiOS || isAndroid) {
           window.location.href = "thebeerstore://";
@@ -30,14 +31,17 @@ function App() {
             : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
               window.location.search +
               window.location.hash;
+          window.alert("mobile detected");
           window.setTimeout(function () {
             window.location.replace(fallbackLink);
+            window.alert("fallback detected");
           }, 1000);
         } else {
           window.location.href =
             "https://www.thebeerstore.ca/" +
             window.location.search +
             window.location.hash;
+          window.alert("window or mac detected");
         }
       }
     } catch {

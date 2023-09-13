@@ -17,7 +17,7 @@ function App() {
     var safariExpression = /Safari/i.test(navigator.userAgent);
     try {
       if (safariExpression && appleExpression) {
-        window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
+        window.open("https://tbsecomd.wpengine.com/openApp");
         window.alert("enter IN safari");
       } else {
         if (isiOS || isAndroid) {
